@@ -5,6 +5,15 @@ int main() {
 	rod rod2;
 	rod rod3;
 
+	bool moved;
+	bool solved = false; //It indicates if all elements have been moved from origin to destination
+
+	int from, to;
+	rod *from_rod, *to_rod;
+
+	from = to = 0;
+	from_rod = to_rod = nullptr;
+
 	rod1.addElement(20);
 	rod1.addElement(19);
 	rod1.addElement(18);
@@ -19,42 +28,26 @@ int main() {
 	rod1.printList();
 	rod2.printList();
 	rod3.printList();
-
-	int from;
-	int to;
+	
 	cout << "Choose rod '1,2 or 3'." << endl;
 	cout << "Change element from rod: ";
 	cin >> from;
 	cout << "Change element to rod: ";
 	cin >> to;
 
-	if (from == 1) {
-		switch (to) {
-		case 1:
-			rod1.moveElement(rod1);
-			break;
-		case 2:
-			rod1.moveElement(rod2);
-			break;
-		case 3:
-			rod1.moveElement(rod3);
-			break;
-		default:
-			cout << "Incorrect 'to_rod'. Please try again" << endl;
-			break;
-		}
-		
-	}
-	else if (from == 2) {
-
-	}
-	else if (from == 3) {
-
-	}
-	else {
-		cout << "Incorrect 'from_rod'. Please try again" << endl;
-	}
+	if (from == 1) from_rod = &rod1; //Origin rod
+	else if (from == 2) from_rod = &rod2;
+	else if (from == 3) from_rod = &rod3;
+	else from_rod = 0;
 	
+	if (to == 1) to_rod = &rod1;  //Destination rod
+	else if (to == 2) to_rod = &rod2;
+	else if (to == 3) to_rod = &rod3;
+	else to_rod = 0;
+
+	if (from != 0 && to != 0 && from != to) {
+		moved = from_rod->moveElement(to_rod);
+	}
 
 	rod1.printList();
 	rod2.printList();
