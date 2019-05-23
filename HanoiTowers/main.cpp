@@ -11,6 +11,15 @@ int main() {
 	rod2.addElement(21);
 	rod3.addElement(22);
 
+	rod1.printList();
+	rod2.printList();
+	rod3.printList();
+
+	rod1.moveElement(rod2);
+	rod1.printList();
+	rod2.printList();
+	rod3.printList();
+
 	int from;
 	int to;
 	cout << "Choose rod '1,2 or 3'." << endl;
@@ -22,13 +31,13 @@ int main() {
 	if (from == 1) {
 		switch (to) {
 		case 1:
-			rod1.moveElement(rod1, rod1);
+			rod1.moveElement(rod1);
 			break;
 		case 2:
-			rod1.moveElement(rod1, rod1);
+			rod1.moveElement(rod2);
 			break;
 		case 3:
-			rod1.moveElement(rod1, rod1);
+			rod1.moveElement(rod3);
 			break;
 		default:
 			cout << "Incorrect 'to_rod'. Please try again" << endl;
