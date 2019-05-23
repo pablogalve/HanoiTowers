@@ -1,6 +1,7 @@
 #ifndef _ROD_H
 #define _ROD_H
 #include <iostream>
+
 using namespace std;
 #define MAX_ELEMENTS 6
 class rod {
@@ -29,13 +30,19 @@ rod::~rod() {}
 void rod::addElement(int elem) {
 
 	for (int i = 0; i < MAX_ELEMENTS; i++) {
-		if (elements[i] == NULL) {
-			if (elements[i - 1] < elem) {
+		if (elements[0] == NULL) 
+		{
+			elements[i] = elem; //we add the element
+			break; //We finish the loop
+		}
+		else if (elements[i] == NULL) 
+		{
+			if (elements[i - 1] > elem) {
 				elements[i] = elem; //we add the element
 				break; //We finish the loop
 			}
 			else {
-				cout << "Your element is bigger";
+				cout << "Error: Your element is smaller." << endl;
 				break;
 			}
 		}
