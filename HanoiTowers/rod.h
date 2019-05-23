@@ -60,10 +60,17 @@ void rod::deleteElement() {
 }
 int rod::getLastElement() {
 	for (int i = 0; i < MAX_ELEMENTS; i++) {
-		if (elements[i] == NULL) {
-			cout << "fdasf: " << elements[i-1] << endl;
-			return elements[i-1];
-			
+		if (elements[i] == NULL) 
+		{
+			if (i != 0) {
+				cout << endl << "Last Element: " << elements[i - 1] << endl;
+				return elements[i - 1];
+			}
+			else 
+			{
+				cout << "This rod is empty" << endl;
+				return elements[i];
+			}						
 		}
 	}
 	return 0;
