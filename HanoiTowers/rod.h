@@ -6,8 +6,13 @@ public:
 
 	bool moveElement(Stack*);
 };
+rod::rod{
 
-void rod::moveElement(rod to_rod) {
+}
+rod::~rod() {
+
+}
+bool rod::moveElement(rod to_rod) {
 	int elem = getLastElement();
 	to_rod.addElement(elem);
 	this->deleteElement();

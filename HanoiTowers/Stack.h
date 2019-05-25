@@ -13,11 +13,11 @@ public:
 
 	void addElement(const Type& elem);
 	void deleteElement();
-	int getTopElement();
+	Type getTopElement() const;
 	void printList();
 private:
 	int maxElem;
-
+	Type* elements;
 };
 
 template<class Type>
