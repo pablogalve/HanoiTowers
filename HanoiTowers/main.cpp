@@ -30,13 +30,8 @@ int main() {
 	rod1.printList();
 	rod2.printList();
 	rod3.printList();
+		
 	
-	rod1.moveElement(&rod2);
-	rod1.printList();
-	rod2.printList();
-	rod3.printList();
-	
-	/*
 	cout << "Choose rod '1,2 or 3'." << endl;
 	cout << "Change element from rod: ";
 	cin >> from;
@@ -53,14 +48,25 @@ int main() {
 	else if (to == 3) to_rod = &rod3;
 	else to_rod = 0;
 
-	if (from != 0 && to != 0 && from != to) {
-		//moved = from_rod->moveElement(to_rod);
+	switch (from) {
+	case 1:
+		rod1.moveElement(to_rod);
+		break;
+	case 2:
+		rod2.moveElement(to_rod);
+		break;
+	case 3:
+		rod3.moveElement(to_rod);
+		break;
+	default:
+		cout << "Your 'from' is incorrect." << endl << "Please try again with 1, 2 or 3" << endl;
+		break;
 	}
 	
 	rod1.printList();
 	rod2.printList();
 	rod3.printList();
-	*/
+	
 
 	system("pause");
 	return 0;

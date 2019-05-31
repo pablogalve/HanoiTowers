@@ -17,6 +17,7 @@ public:
 	void moveElement(rod *to_rod);
 	int getLastElement();
 	void printList();
+	bool checkEmpty; //return true if it is empty
 };
 #endif // !_ROD_H
 
