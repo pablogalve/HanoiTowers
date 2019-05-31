@@ -15,11 +15,12 @@ int main() {
 	from = to = 0;
 	from_rod = to_rod = nullptr;
 
-	rod1.addElement(20);
-	rod1.addElement(19);
-	rod1.addElement(18);
-	rod2.addElement(21);
-	rod3.addElement(22);
+	rod1.addElement(5);
+	rod1.addElement(4);
+	rod1.addElement(3);
+	rod2.addElement(6);
+	rod3.addElement(7);
+	rod3.addElement(6);
 
 	rod1.printList();
 	rod2.printList();

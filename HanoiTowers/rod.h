@@ -50,8 +50,8 @@ void rod::addElement(int elem) {
 	number++;
 }
 void rod::deleteElement() {
-	for (int i = 0; i < MAX_ELEMENTS; i++) {
-		if (elements[i] == NULL) {
+	for (int i = 1; i < MAX_ELEMENTS-1; i++) {
+		if (elements[i] != NULL) {
 			elements[i - 1] = NULL;
 			break;
 		}
@@ -81,10 +81,15 @@ void rod::moveElement(rod to_rod) {
 	this->deleteElement();
 }
 void rod::printList() {
-	cout << "Rod: ";
+	cout << "Rod: " << endl;
 	for (int i = 0; i < MAX_ELEMENTS; i++) {
 		if (elements[i] != NULL) {
-			cout << "[" << elements[i] << "]";
+			
+			for (int j = elements[i]; j > 0; j--) {
+				cout << "["<<i<< "]";
+			}
+			cout << endl;
+			//cout << "[" << elements[i] << "]";
 		}
 		else {
 			cout << endl;
