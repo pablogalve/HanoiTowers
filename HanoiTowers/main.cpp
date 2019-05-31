@@ -30,13 +30,13 @@ int main() {
 	rod1.printList();
 	rod2.printList();
 	rod3.printList();
-	/*
-	rod1.moveElement(rod2);
+	
+	rod1.moveElement(&rod2);
 	rod1.printList();
 	rod2.printList();
 	rod3.printList();
 	
-	
+	/*
 	cout << "Choose rod '1,2 or 3'." << endl;
 	cout << "Change element from rod: ";
 	cin >> from;

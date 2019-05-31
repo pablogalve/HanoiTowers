@@ -14,7 +14,7 @@ public:
 	~rod();
 	void addElement(int elem);
 	void deleteElement();
-	void moveElement(rod to_rod);
+	void moveElement(rod *to_rod);
 	int getLastElement();
 	void printList();
 };
@@ -52,9 +52,9 @@ void rod::addElement(int elem) {
 	number++;
 }
 void rod::deleteElement() {
-	for (int i = 1; i < MAX_ELEMENTS-1; i++) {
-		if (elements[i] != NULL) {
-			elements[i - 1] = NULL;
+	for (int i = 0; i < MAX_ELEMENTS; i++) {
+		if (elements[i] != NULL && elements[i+1] == NULL) {
+			elements[i] = NULL;
 			break;
 		}
 	}
@@ -77,9 +77,9 @@ int rod::getLastElement() {
 	}
 	return 0;
 }
-void rod::moveElement(rod to_rod) {
+void rod::moveElement(rod *to_rod) {
 	int elem = getLastElement();
-	to_rod.addElement(elem);
+	to_rod->addElement(elem);
 	this->deleteElement();
 }
 void rod::printList() {
@@ -87,7 +87,7 @@ void rod::printList() {
 	for (int i = MAX_ELEMENTS-1; i >= 0; i--) {
 		
 		if (elements[i] != NULL) {
-			cout << i << ": ";
+			cout << i+1 << ": ";
 			for (int j = 0; j < elements[i]; j++) {
 				cout << "["<< elements[i] << "]";
 			}
