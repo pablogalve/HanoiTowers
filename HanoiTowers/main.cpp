@@ -20,12 +20,9 @@ int main() {
 	from_rod = to_rod = nullptr;
 
 	rod1.addElement(5);
-	//rod1.addElement(4);
-	//rod1.addElement(3);
-	rod2.addElement(6);
-	//rod3.addElement(7);
-	rod3.addElement(8);
-	rod3.addElement(7);
+	rod1.addElement(4);
+	rod1.addElement(3);
+	rod1.addElement(2);
 
 	rod1.printList();
 	rod2.printList();
