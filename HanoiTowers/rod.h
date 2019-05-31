@@ -8,6 +8,7 @@ class rod {
 public:
 	int number; //number of elements
 	int elements[MAX_ELEMENTS]; //list of elements
+	string name; //rod's name
 
 	rod();
 	~rod();
@@ -21,6 +22,7 @@ public:
 
 rod::rod() {
 	number = 0;
+	name = "";
 	for (int i = 0; i < MAX_ELEMENTS; i++) {
 		elements[i] = NULL;
 	}
@@ -81,19 +83,16 @@ void rod::moveElement(rod to_rod) {
 	this->deleteElement();
 }
 void rod::printList() {
-	cout << "Rod: " << endl;
-	for (int i = 0; i < MAX_ELEMENTS; i++) {
+	cout << name << ": " << endl;
+	for (int i = MAX_ELEMENTS-1; i >= 0; i--) {
+		
 		if (elements[i] != NULL) {
-			
-			for (int j = elements[i]; j > 0; j--) {
-				cout << "["<<i<< "]";
+			cout << i << ": ";
+			for (int j = 0; j < elements[i]; j++) {
+				cout << "["<< elements[i] << "]";
 			}
 			cout << endl;
-			//cout << "[" << elements[i] << "]";
-		}
-		else {
-			cout << endl;
-			i = MAX_ELEMENTS;
 		}
 	}
+	cout << endl;
 }

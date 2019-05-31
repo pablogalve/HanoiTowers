@@ -6,6 +6,10 @@ int main() {
 	rod rod2;
 	rod rod3;
 
+	rod1.name = "Rod1";
+	rod2.name = "Rod2";
+	rod3.name = "Rod3";
+
 	bool moved;
 	bool solved = false; //It indicates if all elements have been moved from origin to destination
 
@@ -21,15 +25,17 @@ int main() {
 	rod2.addElement(6);
 	rod3.addElement(7);
 	rod3.addElement(6);
+	rod3.addElement(2);
 
 	rod1.printList();
 	rod2.printList();
 	rod3.printList();
-
+	/*
 	rod1.moveElement(rod2);
 	rod1.printList();
 	rod2.printList();
 	rod3.printList();
+	
 	
 	cout << "Choose rod '1,2 or 3'." << endl;
 	cout << "Change element from rod: ";
@@ -50,11 +56,11 @@ int main() {
 	if (from != 0 && to != 0 && from != to) {
 		//moved = from_rod->moveElement(to_rod);
 	}
-
+	
 	rod1.printList();
 	rod2.printList();
 	rod3.printList();
-
+	*/
 
 	system("pause");
 	return 0;
