@@ -1,5 +1,5 @@
 #include "rod.h"
-#include "Stack.h"
+//#include "Stack.h"
 
 int main() {
 	rod rod1;
@@ -47,7 +47,7 @@ int main() {
 	else to_rod = 0;
 
 	if (from != 0 && to != 0 && from != to) {
-		moved = from_rod->moveElement(to_rod);
+		//moved = from_rod->moveElement(to_rod);
 	}
 
 	rod1.printList();
