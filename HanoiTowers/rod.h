@@ -17,7 +17,7 @@ public:
 	void moveElement(rod *to_rod);
 	int getLastElement();
 	void printList();
-	bool checkEmpty; //return true if it is empty
+	bool checkEmpty(); //return true if it is empty
 };
 #endif // !_ROD_H
 
@@ -96,4 +96,12 @@ void rod::printList() {
 		}
 	}
 	cout << endl;
+}
+bool rod::checkEmpty() {
+	for (int i = 0; i < MAX_ELEMENTS; i++) {
+		if (elements[i] != NULL)
+			return false;
+	}
+
+	return true;
 }
