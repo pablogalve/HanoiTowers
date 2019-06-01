@@ -6,13 +6,12 @@ using namespace std;
 #define MAX_ELEMENTS 6
 class rod {
 public:
-	int number; //number of elements
 	int elements[MAX_ELEMENTS]; //list of elements
 	string name; //rod's name
 
 	rod();
 	~rod();
-	void addElement(int elem);
+	bool addElement(int elem); //adds element and returns true if it was added. False if it was not added
 	void deleteElement();
 	void moveElement(rod *to_rod);
 	int getLastElement();
@@ -22,7 +21,6 @@ public:
 #endif // !_ROD_H
 
 rod::rod() {
-	number = 0;
 	name = "";
 	for (int i = 0; i < MAX_ELEMENTS; i++) {
 		elements[i] = NULL;
@@ -30,27 +28,26 @@ rod::rod() {
 }
 rod::~rod() {}
 
-void rod::addElement(int elem) {
+bool rod::addElement(int elem) {
 
 	for (int i = 0; i < MAX_ELEMENTS; i++) {
 		if (elements[0] == NULL)
 		{
 			elements[i] = elem; //we add the element
-			break; //We finish the loop
+			return true;
 		}
 		else if (elements[i] == NULL)
 		{
 			if (elements[i - 1] >= elem) {
 				elements[i] = elem; //we add the element
-				break; //We finish the loop
+				return true;
 			}
 			else {
 				cout << "Error: Your element is smaller." << endl;
-				break;
+				return false;
 			}
 		}
 	}
-	number++;
 }
 void rod::deleteElement() {
 	for (int i = 0; i < MAX_ELEMENTS; i++) {
@@ -59,14 +56,12 @@ void rod::deleteElement() {
 			break;
 		}
 	}
-	number--;
 }
 int rod::getLastElement() {
 	for (int i = 0; i < MAX_ELEMENTS; i++) {
 		if (elements[i] == NULL)
 		{
 			if (i != 0) {
-				cout << endl << "Last Element: " << elements[i - 1] << endl;
 				return elements[i - 1];
 			}
 			else
@@ -80,8 +75,8 @@ int rod::getLastElement() {
 }
 void rod::moveElement(rod *to_rod) {
 	int elem = getLastElement();
-	to_rod->addElement(elem);
-	this->deleteElement();
+	if(to_rod->addElement(elem))
+		this->deleteElement();
 }
 void rod::printList() {
 	cout << name << ": " << endl;
