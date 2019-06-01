@@ -76,7 +76,7 @@ int rod::getLastElement() {
 void rod::moveElement(rod *to_rod) {
 	int elem = getLastElement();
 	if(to_rod->addElement(elem))
-		this->deleteElement();
+		this->deleteElement(); //It only deletes the element if it was added successfully to the other rod
 }
 void rod::printList() {
 	cout << name << ": " << endl;
