@@ -1,7 +1,7 @@
 #ifndef _ROD_H
 #define _ROD_H
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 #define MAX_ELEMENTS 6
@@ -80,7 +80,7 @@ void rod::moveElement(rod *to_rod) {
 		this->deleteElement(); //It only deletes the element if it was added successfully to the other rod
 }
 void rod::printList() {
-	//cout << name << ": " << endl;
+	cout << name << ": " << endl;
 	for (int i = MAX_ELEMENTS - 1; i >= 0; i--) {
 
 		if (elements[i] != NULL) {
