@@ -1,7 +1,11 @@
 #include "rod.h"
-//#include "Stack.h"
+#include <chrono>
+#include <thread>
 
 int main() {
+	using namespace std::this_thread; // sleep_for, sleep_until
+	using namespace std::chrono; // nanoseconds, system_clock, seconds
+
 	rod rod1;
 	rod rod2;
 	rod rod3;
@@ -57,9 +61,11 @@ int main() {
 			break;
 		default:
 			cout << "Your 'from' is incorrect." << endl << "Please try again with 1, 2 or 3" << endl;
+			cout << "It will refresh in 5 seconds...";
+			sleep_until(system_clock::now() + seconds(5));
 			break;
 		}
-
+		system("cls");
 		rod1.printList();
 		rod2.printList();
 		rod3.printList();
