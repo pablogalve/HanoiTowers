@@ -14,6 +14,7 @@ int main() {
 	rod3.name = "Rod3";
 
 	int level = 1; //Disks = level + 2
+	int moves = 0;
 
 	bool solved = false; //It indicates if all elements have been moved from origin to destination
 
@@ -26,8 +27,7 @@ int main() {
 	do {
 		cout << "----- Level " << level << " started! -----" << endl;
 		cout << "----- Good luck! -----" << endl;
-
-		
+				
 		//We add disks to first row
 		//Disks added = Level + 2
 		for (int i = level+2; i > 0; i--) {
@@ -70,9 +70,11 @@ int main() {
 				sleep_until(system_clock::now() + seconds(5));
 				break;
 			}
+			moves++;
 			system("cls");
 			cout << "LEVEL: " << level << endl;
-			cout << "DISKS: " << level+2 << endl << endl;
+			cout << "DISKS: " << level+2 << endl;
+			cout << "MOVES: " << moves << endl << endl;
 			rod1.printList();
 			rod2.printList();
 			rod3.printList();
