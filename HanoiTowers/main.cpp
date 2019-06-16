@@ -2,6 +2,36 @@
 #include <chrono>
 #include <thread>
 
+void towerOfHanoi(int n, rod *from_rod, rod *to_rod, rod *aux, int *moves, int level, rod rod1, rod rod2, rod rod3) {
+	
+
+	if (n == 1) {
+		from_rod->moveElement(to_rod);
+		//Print result
+		(int)moves++;
+		system("cls");
+		cout << "LEVEL: " << level << endl;
+		cout << "DISKS: " << level + 2 << endl;
+		cout << "MOVES: " << (int)moves << endl << endl;
+		rod1.printList();
+		rod2.printList();
+		rod3.printList();
+		return;
+	}
+	towerOfHanoi(n - 1, from_rod, aux, to_rod, moves, level, rod1, rod2, rod3);
+	from_rod->moveElement(to_rod);
+	//Print result
+	(int)moves++;
+	system("cls");
+	cout << "LEVEL: " << level << endl;
+	cout << "DISKS: " << level + 2 << endl;
+	cout << "MOVES: " << (int)moves << endl << endl;
+	rod1.printList();
+	rod2.printList();
+	rod3.printList();
+	towerOfHanoi(n - 1, aux, to_rod, from_rod, moves, level, rod1, rod2, rod3);
+}
+
 int main() {
 	using namespace std::this_thread; // sleep_for, sleep_until
 	using namespace std::chrono; // nanoseconds, system_clock, seconds
@@ -32,7 +62,7 @@ int main() {
 	do {
 		cout << "----- Level " << level << " started! -----" << endl;
 		cout << "----- Good luck! -----" << endl;
-				
+		moves = 0;
 		//We add disks to first row
 		//Disks added = Level + 2
 		for (int i = level+2; i > 0; i--) {
@@ -76,25 +106,25 @@ int main() {
 					sleep_until(system_clock::now() + seconds(5));
 					break;
 				}
+				moves++;
+				system("cls");
+				cout << "LEVEL: " << level << endl;
+				cout << "DISKS: " << level + 2 << endl;
+				cout << "MOVES: " << moves << endl << endl;
+				rod1.printList();
+				rod2.printList();
+				rod3.printList();
 			}
 			else if (player == 2) { //Solved by AI
+				towerOfHanoi(level + 2, &rod1, &rod3, &rod2, &moves, level, rod1, rod2, rod3);
+				system("pause");
+			}			
 
-				rod1.towerOfHanoi(level + 2, &rod1, &rod3, &rod2);
-			}
-			
-			moves++;
-			system("cls");
-			cout << "LEVEL: " << level << endl;
-			cout << "DISKS: " << level+2 << endl;
-			cout << "MOVES: " << moves << endl << endl;
-			rod1.printList();
-			rod2.printList();
-			rod3.printList();
-			system("pause");
-			//It is solved if rods 1 and 2 are empty
+			//It is solved if rods 1 and 2 are empty and 3 is not empty
 			if (rod1.checkEmpty())
 				if (rod2.checkEmpty())
-					solved = true;
+					if(rod3.checkEmpty() == false)
+						solved = true;
 		} while (!solved);
 		system("cls");
 		cout << "Congratulations! " << endl << "You finished level: " << level << endl;
