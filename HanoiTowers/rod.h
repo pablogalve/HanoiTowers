@@ -18,6 +18,7 @@ public:
 	int getLastElement();
 	void printList();
 	bool checkEmpty(); //return true if it is empty
+	void towerOfHanoi(int n, rod *from_rod, rod *to_rod, rod *aux); //solves the puzzle by recursivity
 };
 #endif // !_ROD_H
 
@@ -100,4 +101,15 @@ bool rod::checkEmpty() {
 	}
 
 	return true;
+}
+void rod::towerOfHanoi(int n, rod *from_rod, rod *to_rod, rod *aux) {
+	
+	if (n == 1) {
+		from_rod->moveElement(to_rod);
+
+		return;
+	}
+	towerOfHanoi(n - 1, from_rod, aux, to_rod);
+	from_rod->moveElement(to_rod);
+	towerOfHanoi(n - 1, aux, to_rod, from_rod);
 }

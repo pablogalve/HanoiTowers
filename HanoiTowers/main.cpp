@@ -43,44 +43,45 @@ int main() {
 		rod2.printList();
 		rod3.printList();
 		do {	
-			if (player == 1) {
+			if (player == 1) { //Solved by human
 				cout << "Choose rod '1,2 or 3'." << endl;
 				cout << "FROM: ";
 				cin >> from;
 				cout << "TO: ";
 				cin >> to;
-			}
-			else if (player == 2) {
 
+				if (from == 1) from_rod = &rod1; //Origin rod
+				else if (from == 2) from_rod = &rod2;
+				else if (from == 3) from_rod = &rod3;
+				else from_rod = 0;
+
+				if (to == 1) to_rod = &rod1;  //Destination rod
+				else if (to == 2) to_rod = &rod2;
+				else if (to == 3) to_rod = &rod3;
+				else to_rod = 0;
+
+				switch (from) {
+				case 1:
+					rod1.moveElement(to_rod);
+					break;
+				case 2:
+					rod2.moveElement(to_rod);
+					break;
+				case 3:
+					rod3.moveElement(to_rod);
+					break;
+				default:
+					cout << "Your 'from' is incorrect." << endl << "Please try again with 1, 2 or 3" << endl;
+					cout << "It will refresh in 5 seconds...";
+					sleep_until(system_clock::now() + seconds(5));
+					break;
+				}
+			}
+			else if (player == 2) { //Solved by AI
+
+				rod1.towerOfHanoi(level + 2, &rod1, &rod3, &rod2);
 			}
 			
-
-			if (from == 1) from_rod = &rod1; //Origin rod
-			else if (from == 2) from_rod = &rod2;
-			else if (from == 3) from_rod = &rod3;
-			else from_rod = 0;
-
-			if (to == 1) to_rod = &rod1;  //Destination rod
-			else if (to == 2) to_rod = &rod2;
-			else if (to == 3) to_rod = &rod3;
-			else to_rod = 0;
-
-			switch (from) {
-			case 1:
-				rod1.moveElement(to_rod);
-				break;
-			case 2:
-				rod2.moveElement(to_rod);
-				break;
-			case 3:
-				rod3.moveElement(to_rod);
-				break;
-			default:
-				cout << "Your 'from' is incorrect." << endl << "Please try again with 1, 2 or 3" << endl;
-				cout << "It will refresh in 5 seconds...";
-				sleep_until(system_clock::now() + seconds(5));
-				break;
-			}
 			moves++;
 			system("cls");
 			cout << "LEVEL: " << level << endl;
@@ -89,7 +90,7 @@ int main() {
 			rod1.printList();
 			rod2.printList();
 			rod3.printList();
-
+			system("pause");
 			//It is solved if rods 1 and 2 are empty
 			if (rod1.checkEmpty())
 				if (rod2.checkEmpty())
