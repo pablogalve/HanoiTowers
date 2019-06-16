@@ -15,6 +15,7 @@ int main() {
 
 	int level = 1; //Disks = level + 2
 	int moves = 0;
+	int player;
 
 	bool solved = false; //It indicates if all elements have been moved from origin to destination
 
@@ -23,7 +24,11 @@ int main() {
 
 	from = to = 0;
 	from_rod = to_rod = nullptr;
-		
+	
+	cout << "Who will solve the puzzle? Write the number" << endl<< "1. Me" << endl << "2. Artificial Intelligence" << endl;
+	cin >> player;
+	system("cls");
+
 	do {
 		cout << "----- Level " << level << " started! -----" << endl;
 		cout << "----- Good luck! -----" << endl;
@@ -37,12 +42,18 @@ int main() {
 		rod1.printList();
 		rod2.printList();
 		rod3.printList();
-		do {			
-			cout << "Choose rod '1,2 or 3'." << endl;
-			cout << "FROM: ";
-			cin >> from;
-			cout << "TO: ";
-			cin >> to;
+		do {	
+			if (player == 1) {
+				cout << "Choose rod '1,2 or 3'." << endl;
+				cout << "FROM: ";
+				cin >> from;
+				cout << "TO: ";
+				cin >> to;
+			}
+			else if (player == 2) {
+
+			}
+			
 
 			if (from == 1) from_rod = &rod1; //Origin rod
 			else if (from == 2) from_rod = &rod2;
